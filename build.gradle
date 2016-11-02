@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+
+sourceCompatibility=1.8
+targetCompatibility=1.8
+
+repositories {
+    jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile("org.springframework:spring-jdbc")
+	compile("org.springframework.boot:spring-boot-starter-test")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("org.springframework.security:spring-security-config")
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
+    compile 'org.slf4j:slf4j-api:1.7.21' 
+    testCompile 'junit:junit:4.12' 
+	testCompile group: 'com.h2database', name: 'h2', version: '1.0.60'
+	testCompile group: 'org.springframework.security', name: 'spring-security-test'
+    
+}
