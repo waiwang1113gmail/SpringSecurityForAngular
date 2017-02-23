@@ -1,14 +1,12 @@
 package com.waiwang1113.application.response;
 
-public class Response {
+public class ErrorResponse {
 
     private int code;
     private String message;
-    private Error error;
-    public Response(int code, String message, Error error) {
+    public ErrorResponse(int code, String message) {
         this.code = code;
-        this.message = message;
-        this.error = error;
+        this.message = message; 
     }
 
     public int getCode() {
@@ -26,12 +24,5 @@ public class Response {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public Error getError() {
-        return error;
-    }
-
-    public void setError(Error error) {
-        this.error = error;
-    }
+ 
 }

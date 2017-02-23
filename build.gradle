@@ -28,6 +28,9 @@ dependencies {
 	compile("org.springframework.security:spring-security-config")
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
     compile 'org.slf4j:slf4j-api:1.7.21' 
+    compile('net.sf.ehcache:ehcache-core:2.6.9') {
+        exclude group: 'commons-logging'
+    }
     testCompile 'junit:junit:4.12' 
 	testCompile group: 'com.h2database', name: 'h2', version: '1.0.60'
 	testCompile group: 'org.springframework.security', name: 'spring-security-test'

@@ -7,5 +7,5 @@ import com.waiwang1113.application.security.entity.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
-	User findByEmail(String login);
+	User findByEmailAndPassword(String login,String password);
 }
