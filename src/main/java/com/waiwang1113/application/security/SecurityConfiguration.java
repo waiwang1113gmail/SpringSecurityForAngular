@@ -30,7 +30,7 @@ import com.waiwang1113.application.security.handler.RestAuthenticationSuccessHan
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Autowired

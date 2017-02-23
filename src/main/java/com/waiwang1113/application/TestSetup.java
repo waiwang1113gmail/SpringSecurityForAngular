@@ -30,7 +30,7 @@ public class TestSetup {
 		user=userRepo.save(user);
 		UserRole role=new UserRole();
 		role.setUserId(user.getId());
-		role.setRole("USER");
+		role.setRole("ROLE_USER");
 		roleRepo.save(role);
     }
 }
