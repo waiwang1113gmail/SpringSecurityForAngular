@@ -43,21 +43,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.anonymous().disable();
-		http.exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).accessDeniedHandler(unauthroizedEntryPoint2());
+		http.exceptionHandling().authenticationEntryPoint(unauthenticatedEntryPoint())
+			.accessDeniedHandler(unauthroizedEntryPoint());
 		
 		http.addFilterBefore(new AuthenticationFilter(authenticationManager()), BasicAuthenticationFilter.class);
 		
 		//Comment out in case we need backend admin
 		//.addFilterBefore(/*new ManagementEngpointAuthenticationFilter(authenticationManager())*/null, BasicAuthenticationFilter.class)
 	}
-	private AccessDeniedHandler unauthroizedEntryPoint2() {
+	private AccessDeniedHandler unauthroizedEntryPoint() {
 		return (request, response, authException) ->{
 			LOG.trace("Unauthorized access.",authException);
 			ResponseHelper.sendError(response, HttpServletResponse.SC_FORBIDDEN,
 			   "Authorization failed");
 		};
 	}
-	private AuthenticationEntryPoint unauthorizedEntryPoint(){
+	private AuthenticationEntryPoint unauthenticatedEntryPoint(){
 		return (request, response, authException) -> 
 			{
 				LOG.trace("Unauthorized access.",authException);
