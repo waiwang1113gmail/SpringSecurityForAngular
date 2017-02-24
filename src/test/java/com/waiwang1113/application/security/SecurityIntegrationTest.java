@@ -52,5 +52,16 @@ public class SecurityIntegrationTest {
     		.statusCode(HttpStatus.OK.value())
     		.body("token", not(nullValue()));
     }
+    @Test
+    public void test_authenticate_fail() {
+    	given()
+    		.header(X_AUTH_USERNAME, "user")
+    		.header(X_AUTH_PASSWORD,"password").
+        when()
+        	.get(RestfulApiController.AUTHENTICATE_URL)
+    	.then()
+    		.statusCode(HttpStatus.METHOD_NOT_ALLOWED.value())
+    		.body("token", not(nullValue()));
+    }
     
 }
